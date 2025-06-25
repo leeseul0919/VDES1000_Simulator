@@ -1,0 +1,93 @@
+{
+    "EDM": {
+        "expected_responses":["EDO","EAK"], 
+        "structure": ["seq_nr","source_mmsi","dest_mmsi","data","fill_bits"],
+        "Field_conditions": {
+            "seq_nr": {"type":"int","range":[0,999],"is_null":false},
+            "source_mmsi": {"type":"int","range":[0,999999999],"is_null":true},
+            "dest_mmsi": {"type":"int","range":[0,999999999],"is_null":true},
+            "data": {"type":"str","range":[0,664],"is_null":false},
+            "fill_bits": {"type":"int","range":[0,6],"is_null":false}
+        },
+        "standard_v": "IALA G1139",
+        "requires_ack":["EAK"]
+    },
+    "EAK": {
+        "expected_responses": [], 
+        "structure": ["seq_nr","dest_mmsi","acknowledgement"],
+        "Field_conditions": {
+            "seq_nr": {"type":"int","range":[0,999],"is_null":false},
+            "dest_mmsi": {"type":"int","range":[0,999999999],"is_null":true},
+            "acknowledgement": {"type":"str","range":[1,1],"is_null":false}
+        },
+        "standard_v": "IALA G1139",
+        "requires_ack":[]
+    },
+    "EDO": {
+        "expected_responses": [], 
+        "structure": ["seq_nr","source_mmsi","dest_mmsi","data","fill_bits"],
+        "Field_conditions": {
+            "seq_nr": {"type":"int","range":[0,999],"is_null":false},
+            "source_mmsi": {"type":"int","range":[0,999999999],"is_null":true},
+            "dest_mmsi": {"type":"int","range":[0,999999999],"is_null":true},
+            "data": {"type":"str","range":[0,664],"is_null":false},
+            "fill_bits": {"type":"int","range":[0,6],"is_null":false}
+        },
+        "standard_v": "IALA G1139",
+        "requires_ack":[]
+    },
+    "NAK": {
+        "expected_responses": [], 
+        "structure": ["talker_id","s_formatter","unique_id","nak_reason_code","nak_content"],
+        "Field_conditions": {
+            "talker_id": {"type":"str","range":[1,2],"is_null":false},
+            "s_formatter": {"type":"str","range":[3,3],"is_null":false},
+            "unique_id": {"type":"str","range":[0,15],"is_null":true},
+            "nak_reason_code": {"type":"int","range":[0,498],"is_null":false},
+            "nak_content": {"type":"str","range":[0,300],"is_null":true}
+        },
+        "standard_v": "IEC 61162-1",
+        "requires_ack":[]
+    },
+    "ERM": {
+        "expected_responses": ["ERO"],
+        "structure": ["total_sen","sen_nr","seq_nr","data","fill_bits"],
+        "Field_conditions": {},
+        "standard_v": "IALA G1139",
+        "requires_ack": []
+    },
+    "ERO": {
+        "expected_responses": [],
+        "structure": ["total_sen","sen_nr","seq_nr","source_mmsi","dest_mmsi","data","fill_bits"],
+        "Field_conditions": {},
+        "standard_v": "IALA G1139",
+        "requires_ack": []
+    },
+    "ETA": {
+        "expected_responses": [],
+        "structure": ["seq_nr","centre_freq","link_id","frame_time","slot_nr"],
+        "Field_conditions": {},
+        "standard_v": "IALA G1139",
+        "requires_ack": []
+    },
+    "ESI": {
+        "expected_responses": [],
+        "structure": ["seq_nr","centre_freq","link_id","time","slot_nr","sig_str","sig_to_no","cqi"],
+        "Field_conditions": {},
+        "standard_v": "IALA G1139",
+        "requires_ack": []
+    },
+    "TXT": {
+        "expected_responses":[],
+        "structure": ["total_nr","sen_nr","txt_id","txt_msg"],
+        "Field_conditions": {
+            "total_nr": {"type":"int","range":[1,99],"is_null":true},
+            "sen_nr": {"type":"int","range":[1,99],"is_null":true},
+            "txt_id": {"type":"int","range":[1,99],"is_null":true},
+            "txt_msg": {"type":"str","range":[0,300],"is_null":true}
+        },
+        "standard_v": "IEC 61162-1",
+        "requires_ack":[]
+    },
+    "OTHER": {"expected_responses": [], "structure":[],"requires_ack":[]}
+}
