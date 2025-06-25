@@ -1,6 +1,4 @@
 from comm_socket import *
-from gui_app import *
-from nmea_utils import * 
 from policy_manager import *
 
 if __name__ == '__main__':
@@ -24,7 +22,3 @@ if __name__ == '__main__':
 
     policy_manager = SentencePolicyManager(policy_file_path)
     comm = VDESComm(policy_manager)
-    #gui = VDESGUI(policy_manager)
-
-    #comm.start()
-    #gui.run()
